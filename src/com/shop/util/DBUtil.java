@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBUtil {
 
     private static final String URL =
-        "jdbc:mysql://localhost:3306/EcommerceDB?useSSL=false&serverTimezone=UTC";
+        "jdbc:mysql://localhost:3306/ecommerceDB?useSSL=false&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASS = "qwertyuiop1@PP";
 
