@@ -56,7 +56,33 @@ public class AdminDao {
             }
         }
     }
+    
+    public void printAllUsers() throws SQLException {
+        String sql = "SELECT user_id, role, first_name, last_name, username, email, mobile, city FROM users ORDER BY user_id";
 
+        try (Connection con = DBUtil.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            System.out.println("\nID | ROLE | NAME | USERNAME | EMAIL | MOBILE | CITY");
+            boolean found = false;
+
+            while (rs.next()) {
+                found = true;
+                System.out.println(
+                    rs.getInt("user_id") + " | " +
+                    rs.getString("role") + " | " +
+                    rs.getString("first_name") + " " + rs.getString("last_name") + " | " +
+                    rs.getString("username") + " | " +
+                    rs.getString("email") + " | " +
+                    rs.getString("mobile") + " | " +
+                    rs.getString("city")
+                );
+            }
+
+            if (!found) System.out.println("No users found.");
+        }
+    }
     
     public Integer checkQuantity(int productId) throws SQLException {
         String sql = "SELECT quantity FROM products WHERE product_id = ?";
