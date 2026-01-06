@@ -198,6 +198,7 @@ public class MainApp {
 			System.out.println("1. Add product");
 			System.out.println("2. Check quantity by product id");
 			System.out.println("3. View user history by username");
+			System.out.println("4. View registered users");
 			System.out.println("0. Back");
 			System.out.print("Enter choice: ");
 
@@ -224,7 +225,16 @@ public class MainApp {
 					System.out.println("Error: " + e.getMessage());
 				}
 				break;
+			
+			case 4:
+			    try {
+			        adminDao.printAllUsers();
+			    } catch (Exception e) {
+			        System.out.println("Error: " + e.getMessage());
+			    }
+			    break;
 
+				
 			default:
 				System.out.println("Invalid choice.");
 			}
